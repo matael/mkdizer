@@ -2,8 +2,14 @@
 
 require_once "./markdown.php";
 
-$file = './'.$_GET['n'].'.mkd';
-$title = preg_replace('#_#', ' ', $file);
+if (isset($_GET['n'])){
+	$file = './'.$_GET['n'].'.mkd';
+	$title = preg_replace('#_#', ' ', $file);
+} else {
+	$file = './index.mkd';
+	$title = 'Index';
+}
+
 $fh = fopen($file, 'r');
 
 echo<<<END
